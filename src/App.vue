@@ -1,20 +1,43 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
     <router-view />
   </div>
 </template>
-
+<script>
+export default {
+  mounted() {
+    window.addEventListener(
+      'beforeunload',
+      e =>
+        function (e) {
+          debugger
+          // do something meaningful
+          console.log('close closeWS', e)
+        }
+    )
+  },
+}
+</script>
 <style>
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(29, 32, 48, 1);
+  box-sizing: border-box;
+}
 #app {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  background: rgba(29, 32, 48, 1);
 }
 
 nav {
